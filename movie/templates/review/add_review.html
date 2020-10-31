@@ -1,0 +1,18 @@
+{% extends 'layout.html' %} {% block content %}
+    <main id="main">
+        <h1 id="review-title" class="title">{{ title }}</h1>
+        <div id="review-formwrapper" class="formwrapper">
+            <h2 id="review-movie">{{ movie_title }}</h2>
+            <form method="POST" action="{{ url_for('review_bp.add_review', movie_id=movie_id) }}">
+                {{ form.csrf_token }}
+                <div id="review-rating-field" class="form-field">
+                    {{ form.rating.label }} {{ form.rating }}
+                </div>
+                <div id="review-text-field" class="form-field">
+                    {{ form.review_text.label }} {{ form.review_text }}
+                </div>
+                {{ form.submit(class_="btn btn-secondary") }}
+            </form>
+        </div>
+    </main>
+{% endblock %}

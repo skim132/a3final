@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>The Assignment 2</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/m2.css') }}"/>
+
+    </head>
+<body>
+<div id="body">
+    {% include 'side_bar.html' %}
+    <div id="content">
+            {% include 'headers.html' %}
+            <div id="container">
+                {% block content %} {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <header id="article-header" class="title">
+        <h1>{{ title }}</h1>
+    </header>
+    <div id="movie-search-formwrapper" class="formwrapper">
+        <h1 id="movie-search-title" class="title">{{ title }}</h1>
+        <form method="POST" action="{{ url_for('movie_bp.movie') }}">
+            {{ form.csrf_token }}
+            <div id="search-criteria-field" class="form-field">
+                {{ form.search_by.label }} {{ form.search_by }}
+            </div>
+            <div id="search-text-field" class="form-field">
+                {{ form.search_text.label }} {{ form.search_text }}
+            </div>
+            {{ form.submit }}
+        </form>
+        <button class="btn-general" onclick="location.href='{{ clear_url }}'">Clear</button>
+    </div>
+
+    <nav class="movie_nav">
+        <div style="float: left">
+            {% if first_url is not none %}
+                <button class="btn-general" onclick="location.href='{{ first_url }}'">Front</button>
+            {% else %}
+                <button class="btn-general-disable" disabled>Front</button>
+            {% endif %}
+            {% if prev_url is not none %}
+                <button class="btn-general" onclick="location.href='{{ prev_url }}'">Previous</button>
+            {% else %}
+                <button class="btn-general-disable" disabled>Previous</button>
+            {% endif %}
+        </div>
+        <div style="float: right">
+            {% if next_url is not none %}
+                <button class="btn-general" onclick="location.href='{{ next_url }}'">Next</button>
+            {% else %}
+                <button class="btn-general-disable" disabled>Next</button>
+            {% endif %}
+            {% if last_url is not none %}
+                <button class="btn-general" onclick="location.href='{{ last_url }}'">Last</button>
+            {% else %}
+                <button class="btn-general-disable" disabled>Last</button>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="movie_list">
+        {% for movie in movies %}
+             <a href="{{ url_for('movie_bp.movie_info', movie_id=movie.id) }}">{{ movie.title }}</a><br>
+        {% endfor %}
+    </div>
+
+{% endblock %}

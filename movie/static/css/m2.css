@@ -1,0 +1,36 @@
+#logo {
+    width: 100px;
+    height: 100px;
+}
+
+.movie_nav {
+    clear: both;
+    float: left;
+    width: 100%;
+}
+
+.movie_list {
+    float: left;
+}
+
+#body {
+    display: flex;
+}
+
+#body #content {
+    flex-grow: 1;
+}
+
+#aside-btns, a.aside-btn {
+    float: left;
+    width: 100%;
+}
+
+a.aside-btn {
+    margin-top: 10px;
+}
+
+aside {
+    width: 300px;
+    text-align: center;
+}
