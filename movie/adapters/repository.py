@@ -50,7 +50,7 @@ class AbstractRepository(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def get_movie_by_id(self, movie_id: str) -> Movie:
+    def get_movie_by_id(self, movie_id: int) -> Movie:
         """ Get movie by movie id. """
         raise NotImplementedError
 

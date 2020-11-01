@@ -279,30 +279,40 @@ class Movie:
     def __hash__(self) -> int:
         return hash((self.title, self.year))
 
-    def add_genre(self, genre):
-        if isinstance(genre, Genre):
-            if genre not in self._genres:
-                self._genres.append(genre)
+    def add_actor(self, actor: Actor):
+        if type(actor) is Actor:
+            self._actors.append(actor)
 
-    def remove_genre(self, genre):
-        if isinstance(genre, Genre):
-            if genre in self._genres:
-                self._genres.remove(genre)
-        elif isinstance(genre, str):
-            for genre in self._genres:
-                if genre.genre_name == genre:
-                    self._genres.remove(genre)
+    def remove_actor(self, actor: Actor):
+        for actor_to_remove in self._actors:
+            if actor_to_remove == actor:
+                self._actors.remove(actor_to_remove)
 
-    def add_actor(self, actor):
-        if isinstance(actor, Actor):
-            if actor not in self._actors:
-                self._actors.append(actor)
+    def add_genre(self, genre: Genre):
+        if type(genre) is Genre:
+            self._genres.append(genre)
 
-    def remove_actor(self, actor):
-        if isinstance(actor, Actor):
-            if actor in self._actors:
-                self._actors.remove(actor)
-        elif isinstance(actor, str):
-            for actor in self._actors:
-                if actor.actor_full_name == actor:
-                    self._actors.remove(actor)
+    def remove_genre(self, genre: Genre):
+        for genre_to_remove in self._genres:
+            if genre_to_remove == genre:
+                self._genres.remove(genre_to_remove)
+
+    def add_review(self, review: Review):
+        if type(review) is Review:
+            self._reviews.append(review)
+
+    def remove_review(self, review: Review):
+        for review_to_remove in self._comments:
+            if review_to_remove == review:
+                self._comments.remove(review_to_remove)
+
+    def remove_review_by_id(self, review_id: str):
+        reviews_to_remove = []
+        for review_to_remove in self._comments:
+            if review_to_remove.review_id == review_id:
+                reviews_to_remove.append(review_to_remove)
+        for review_to_remove in reviews_to_remove:
+            self._comments.remove(review_to_remove)
+
+    def set_director(self, director: Director):
+        self._director = director

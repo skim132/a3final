@@ -41,7 +41,7 @@ class MovieFileCSVReader(object):
         with open(self._data_path, mode='r', encoding='utf-8-sig') as f:
             records = csv.DictReader(f)
             for record in records:
-                movie = Movie(record.get('Title'), int(record.get('Year', 0)))
+                movie = Movie(record.get('Title'), int(record.get('Year', 0)),record.get("Rank",0))
 
                 for actor in self._read_field(record, 'Actors', ','):
                     actor = Actor(actor)

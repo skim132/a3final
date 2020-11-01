@@ -89,7 +89,7 @@ class MemoryRepository(AbstractRepository):
                      and movie.year == year),
                     None)
 
-    def get_movie_by_id(self, movie_id: str) -> Movie:
+    def get_movie_by_id(self, movie_id: int) -> Movie:
         return self._movies_index.get(movie_id)
 
     def get_n_movies(self, n: int, offset: int = 0) -> List[Movie]:
@@ -99,12 +99,12 @@ class MemoryRepository(AbstractRepository):
         return len(self._movies)
 
     def get_first_movie(self) -> Movie:
-        return self._get_movie_by_idx(0)
+        return self._get_movies_by_idx(0)
 
     def get_last_movie(self) -> Movie:
-        return self._get_movie_by_idx(-1)
+        return self._get_movies_by_idx(-1)
 
-    def _get_movie_by_idx(self, idx: int) -> Movie:
+    def _get_movies_by_idx(self, idx: int) -> Movie:
         try:
             movie = self._movies[idx]
         except IndexError:
