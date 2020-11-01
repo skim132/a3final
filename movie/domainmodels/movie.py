@@ -14,7 +14,7 @@ class User:
         self._time_spent_watching_movies_minutes = 0
 
     @property
-    def username(self):
+    def _user_name(self):
         return self._user_name
 
     @property
@@ -120,6 +120,8 @@ class Review:
             return all(res)
         return False
 class Movie:
+    _title = None
+
     def __init__(self, title: str, year: int,movie_id:int):
         self._id = movie_id
         self._title = None
