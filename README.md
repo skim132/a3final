@@ -42,7 +42,7 @@ Make sure the virtual environment has been selected as the project interpreter
 
 ## Configuration
 
-The *a3finals/.env* contains global environment settings include:
+The *a3final/.env* contains global environment settings include:
 
 - `FLASK_APP`: Entry point of the application
 - `FLASK_ENV`: The environment in which to run the application (either `development` or `production`)
